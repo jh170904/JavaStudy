@@ -1,0 +1,61 @@
+<!DOCTYPE html> <!-- 문서유형설명.. html5.0을 사용하겠다 -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>XML 파싱</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+	//전역변수
+	var xmlDoc = new ActiveXObject("Msxml2.DOMDocument");//xml 데이터를 담을 객체 생성
+	xmlDoc.load("city.xml");
+	
+	function printNodeName(){
+		//alert("테스트");
+		
+		var city = xmlDoc.getElementsByTagName("도시")[0];
+		var cityName = city.firstChild.nodeName;
+		alert("첫번째 도시: " + cityName);
+		
+		var cityName = city.lastChild.nodeName;
+		alert("마지막 도시: " + cityName);
+		
+		var cityNames="";
+		for(var i=0;i<city.childNodes.length;i++){
+			cityNames = cityNames +"\n" + city.childNodes[i].nodeName;
+		}
+		alert("전체 도시: " + cityNames);
+		
+	}
+
+	function printXML(){
+		alert(xmlDoc.xml);
+		
+	}
+	
+	function printNodeValue(){
+		
+		var seoul = xmlDoc.getElementsByTagName("서울")[0];
+		var items = seoul.getElementsByTagName("구");
+		
+		var out = "";
+		for(var i=0;i<items.length;i++){
+			out += "\n" + items[i].childNodes[0].nodeValue;
+		}
+		alert(out);
+		
+	}
+	
+
+	
+	
+</script>
+
+<input type="button" value ="노드이름출력" onclick="printNodeName();"/></br>
+<input type="button" value ="노드값출력" onclick="printNodeValue();"/></br>
+<input type="button" value ="노드전체구조" onclick="printXML();"/></br>
+
+</body>
+</html>
