@@ -11,12 +11,11 @@ public class MySweetDreamHouseMain {
 		Scanner sc = new Scanner(System.in);
 		JoinImpl ji = new JoinImpl();
 		Picture pi = new Picture();
-		
 		int ch;
 		
 		while(true){
 			
-			pi.city1();
+			pi.run();
 			do {
 				System.out.println("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
 				System.out.print("□\t\t\t서울시 내 마음에 쏙 드는 부동산 찾기\t\t\t      □\n");

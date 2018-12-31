@@ -12,6 +12,7 @@ class Test1  {
 		BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
 /*		
 		System.in: stream .컴퓨터 간의 통신시 사용하는 파이프라인 개념. 키보드로 입력한 1byte의 데이터 인식
+
 		String a 
 		System.out.printf("첫번째 수 입력?"); //50
 		a = br.readLine();	

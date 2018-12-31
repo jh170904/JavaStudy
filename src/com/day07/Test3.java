@@ -61,8 +61,6 @@ public class Test3 {
 		System.out.println("class 변수 a: " + ob.a); // 에러는 아니지만 클래스변수를 객체변수로 쓴 것...	
 		ob.print();
 		
-		System.out.println("------------------------");
-		
 		Test3 ob1 = new Test3();
 		ob1.a = 100; // 10 -> 100
 		ob1.b = 200; // 따로 만들어지므로 ob.b 와 ob1.b 메모리는 다름

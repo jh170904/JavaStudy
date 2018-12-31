@@ -13,7 +13,7 @@ class Super{
 class Sub extends Super{
 	
 	//Sub(){} 기본생성자 존재
-	//그 안에 super() 숨겨져있음. super()의 역할은 부모-자식관의 관계를 유지시켜주는 것 
+	//그 안에 super() 숨겨져있음. super()의 역할은 부모-자식간의 관계를 유지시켜주는 것 
 	public Sub(){
 		this(10); //public Sub(int a){} 호출. 생성자에서 생성자 호출. 이럴땐 this사용
 	}  

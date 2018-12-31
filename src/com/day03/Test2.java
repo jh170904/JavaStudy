@@ -44,8 +44,9 @@ class Test2 {
 			}// Y,y가 아니면 종료하는 조건문 작성. 양쪽이 !=(부정)이면 &&로 작성. 2진수의 보수 때문
 
 			System.in.skip(2);
-			// System.in.skip(2); 없으면 NumberFormatException 발생. 앞에 null값을 int형으로
-			// 변환하라고 시킨거니까
+			// System.in.skip(2); 없으면 NumberFormatException 발생. 
+			// 앞에 null값을 int형으로 변환하라고 시킨거니까
+			// Skips over and discards n bytes of data from this inputstream
 			// enter에 해당하는 ASCII CODE : 10(커서왼쪽정렬)과 13(커서줄바꿈). 둘을 모두 지우기 위해서 2로 설정
 
 		}// end~while

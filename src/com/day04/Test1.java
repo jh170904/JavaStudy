@@ -105,80 +105,77 @@ public class Test1 {
 
 		int i, j;
 
-/*
-		 //행의 수 5개
-		 for(i=1;i<=5;i++){
+		System.out.println("직각삼각형");
+		 for(i=1;i<=5;i++){  	//행의 수 5개
+
+			 //j는 5-i번까지 공백을 찍음 
+			 for(j=1;j<=5-i;j++){ 
+				 System.out.print(" ");
+			 }
 		 
-		 //j는 5-i번까지 공백을 찍음 
-		 for(j=1;j<=5-i;j++){ 
-		 	System.out.print(" ");//공백한칸
-		 }
+			 //j는 i번 별을 찍어라 
+			 for(j=1;j<=i;j++){ 
+				 System.out.print("*"); 
+			 }
+			 System.out.println();//줄바꿈 
 		 
-		 //j는 i번 별을 찍어라 
-		 for(j=1;j<=i;j++){ 
-		 	System.out.print("*"); 
-		 	}
-		
-		 System.out.println();//줄바꿈 
 		 }
 
-*/
-/*
-		 //행의 수 5개 for(i=1;i<=5;i++){
-		  
-		 //j는 5-i번까지 공백을 찍음. 위의 예제와 공백개수는 동일 for(j=1;j<=5-i;j++){
-		 System.out.print(" ");//공백한칸 }
-		  
-		 //j는 2i-1번 별을 찍어라. 어떠한 수든 2*x-1은 홀수가 나온다. for(j=1;j<=i*2-1;j++){
-		 System.out.print("*"); }
-		  
-		 System.out.println();//줄바꿈 }
-*/
 
-/*
-		 for(i=5;i>=1;i--){//i=i-1
-		   
-		 	for(j=1;j<=5-i;j++){ 
-		 	System.out.print(" ");//공백한칸 
-		 }
-		 
-		 	for(j=1;j<=i*2-1;j++){ 
-		 	System.out.print("*"); 
-		 }
-		  	System.out.println();//줄바꿈 
+		 System.out.println("\n정삼각형"); 
+		 for(i=1;i<=5;i++){		//행의 수 5개
 		  
+			 //j는 5-i번까지 공백을 찍음. 위의 예제와 공백개수는 동일 
+			 for(j=1;j<=5-i;j++){
+				 System.out.print(" ");//공백한칸 
+			 }
+		  
+			 //j는 2i-1번 별을 찍어라. 어떠한 수든 2*x-1은 홀수가 나온다. 
+			 for(j=1;j<=i*2-1;j++){
+				 System.out.print("*"); 
+			 }
+			 System.out.println();//줄바꿈 
 		 }
-*/
 
-		// 모래시계
-		for (i = 5; i >= 1; i--) {// i=i-1
 
-			for (j = 1; j <= 5 - i; j++) {
+		 System.out.println("\n역삼각형");
+		for(i=5;i>=1;i--) {// i=i-1
+
+			for(j=1;j<=5-i;j++) {
 				System.out.print(" ");// 공백한칸
 			}
+			for(j=1;j<=i*2-1;j++) {
+				System.out.print("*");
+			}
+			System.out.println();// 줄바꿈
 
-			for (j = 1; j <= i * 2 - 1; j++) {
+		}
+
+		System.out.println("\n모래시계");
+		for(i=5;i>=1;i--) {// i=i-1
+
+			for(j=1;j<=5-i;j++) {
+				System.out.print(" ");
+			}
+
+			for(j=1;j<=i* 2 - 1; j++) {
 				System.out.print("*");
 			}
 
 			System.out.println();// 줄바꿈
 		}
-
-		for (i = 2; i <= 5; i++) {
-
-			// j는 5-i번까지 공백을 찍음. 위의 예제와 공백개수는 동일
-			for (j = 1; j <= 5 - i; j++) {
-				System.out.print(" ");// 공백한칸
-			}
-
-			// j는 2i-1번 별을 찍어라. 어떠한 수든 2*x-1은 홀수가 나온다.
-			for (j = 1; j <= i * 2 - 1; j++) {
-				System.out.print("*");
-			}
-
-			System.out.println();// 줄바꿈
+		for(i=2;i<=5;i++){
+		  
+			 for(j=1;j<=5-i;j++){
+				 System.out.print(" "); 
+			 }
+			 
+			 for(j=1;j<=i*2-1;j++){
+				 System.out.print("*"); 
+			 }
+			 System.out.println();//줄바꿈 
 		}
 
-	}
+	}//end~class
 
-}
+}//end~main

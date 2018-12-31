@@ -22,8 +22,8 @@ public class Test3 {
 			}
 		}
 			
-		for(i=0;i<arr[i].length;i++){ //출력은 6*6
-			for(j=0;j<arr[j].length;j++){			
+		for(i=0;i<6;i++){ //출력은 6*6
+			for(j=0;j<6;j++){			
 				System.out.printf("%4d", arr[i][j]);
 			}
 			System.out.println();

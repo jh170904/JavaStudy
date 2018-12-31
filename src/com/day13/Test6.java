@@ -30,7 +30,7 @@ public class Test6 {
 			// a = sc.nextInt();
 			// b = sc.nextInt();
 			a = Integer.parseInt(br.readLine());
-			System.out.print("첫번째 수? ");
+			System.out.print("두번째 수? ");
 			b = Integer.parseInt(br.readLine());
 
 			System.out.print("연산자? ");
@@ -61,9 +61,12 @@ public class Test6 {
 			System.out.println("숫자가 아니야!");
 			// System.out.println(e.toString());
 			e.printStackTrace();// 원래 뜨던 에러 화면. default였는데 try catch 사용한 것
+		
 		} finally {//에러발생시 해당하는 에러부분의 catch문이 실행되고 finally가 항상 실행.
+			
 			System.out.println("난 항상 보인다");
 		}
+		
 		System.out.println("여기는 try밖...");
 
 	}

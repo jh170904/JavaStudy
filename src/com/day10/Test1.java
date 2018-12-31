@@ -48,7 +48,7 @@ public class Test1 {
 		//사전식 배열 정렬.(ASCII값의 차) 가나다순으로 
 		String s8 = "abcdefg";
 		String s9 = "abcefgh";
-		
+
 		System.out.println(s8.compareTo(s9)); //-1
 		System.out.println(s9.compareTo(s8)); //1
 	

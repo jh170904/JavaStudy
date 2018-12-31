@@ -18,20 +18,7 @@ public class Test12 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("두 수를 입력하세요.");
 		i = sc.nextInt();//30
-		j = sc.nextInt();//20	
-		
-/*		if(i>j){ 
-			i=i^j; 
-			j=i^j; 
-			i=i^j; 
-		}
-		
-		for(k=i;k<=j;k++){			
-			tot+=i;		
-		}
-		System.out.printf("%d에서 %d까지의 합 : %d", i, j, tot);
-*/
-		
+		j = sc.nextInt();//20		
 		
 		//연산
 		if (i > j) {

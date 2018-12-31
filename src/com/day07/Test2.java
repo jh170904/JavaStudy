@@ -18,8 +18,8 @@ class Circle{
 	
 	this : me. class 이름
 	
-	코딩하다보면 연결이 끊어진 garbage collector 가 존재할 경우가 있음
-	VM에서 이런 클래스들을 삭제하는 클래스가 존재함
+	코딩하다보면 연결이 끊어진 garbage 데이터가 존재하는 경우가 있음
+	VM에서 이런 클래스들을 삭제하는 garbage collector가 존재함
 	그런데 메소드가 따로 없기 때문에 돌아다니다 자동으로 삭제되므로 하나도 삭제를 못하는 경우도 존재
 	
 */	
@@ -30,7 +30,6 @@ class Circle{
 					//컴퓨터에서 전역변수로 인식하게 하기 위해 this사용. this는 me 와 같음. 자기자신. 클래스이름의 대명사.
 					//혼동될 소지가 없으면 생략해도 됨
 	}
-	
 
 	public double area(){//area(Circle this)
 		return this.r*this.r*3.14;	
@@ -42,7 +41,6 @@ class Circle{
 	}
 	
 }
-
 
 public class Test2 {
 

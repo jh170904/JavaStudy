@@ -3,8 +3,9 @@ package com.day04;
 public class Test8 {
 
 	public static void main(String[] args) {
-/*
+
 		// (1)+(1+2)+(1+2+3)+...+(1+2+3+...+10)
+		//规过1
 		int i, j;
 		int sum = 0;
 		for (i = 1; i <= 10; i++) {
@@ -13,8 +14,8 @@ public class Test8 {
 			}
 		}
 		System.out.println("(1)+(1+2)+(1+2+3)+...+(1+2+3+...+10):" + sum);
-*/	
-
+	
+		//规过2
 		int n, sum1, sum2;	
 		n=sum1=sum2=0;
 		

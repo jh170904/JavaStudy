@@ -19,6 +19,7 @@ public class Test6 {
 	
 	public static void main(String[] args) throws IOException {
 /*			
+		//방법1
 		char ch = 0;
 	    String str = "";
 	    
@@ -45,15 +46,16 @@ public class Test6 {
 		for(i=0;i<=j;i++){		
 			sum = sum + i;			
 		}
-		System.out.printf("합계는 %d 입니다.",sum);
+		System.out.printf("1부터 %d까지의 합계는 %d 입니다.",j, sum);
 */		
+		//방법2
 		int n=0, s=0;
 		int data;
 		
 		System.out.print("숫자를 입력하세요: ");//1(49)2(50)3(51)
-		//System.in.read() 사용자가 입력한 숫자를 byte단위로 읽어서 저장함
-		while((data=System.in.read())!=13){ //char형태의 값을 정수로 바꾸는 공식 기억.		
-			n=n*10+data-48;
+												//System.in.read() 사용자가 입력한 숫자를 byte단위로 읽어서 저장함
+		while((data=System.in.read())!=13){ 	
+			n=n*10+data-48;						//char형태의 값을 정수로 변환.		
 		}
 		
 		// 1 = 0 * 10 + 49 - 48
@@ -63,7 +65,7 @@ public class Test6 {
 		for(int i=1;i<=n;i++){		
 			s = s + i;			
 		}
-		System.out.printf("합계는 %d 입니다.",s);
+		System.out.printf("1부터 %d까지의 합계는 %d 입니다.",n,s);
 		
 	}
 

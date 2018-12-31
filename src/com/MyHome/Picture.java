@@ -1,6 +1,6 @@
 package com.MyHome;
 
-public class Picture {
+public class Picture implements Runnable{
 
 	public void city1() {
 
@@ -28,6 +28,19 @@ public class Picture {
 		System.out.println("\t ~~    ~~~~~~~~     ~~~~~~~   ~~~~~~~~~   ~~~~~~~~~~      ~~~~~~~     ~~~	");
 		System.out.println("\t ~~~~~~~~~  ~~~~  ~~~~~ ~~~~~~~~~ ~ ~      ~~~~~~ ~~~~~~     ~~~~    ~~~~	");
 
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+	
+		try {
+			city1();
+			Thread.sleep(500);
+				
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 }

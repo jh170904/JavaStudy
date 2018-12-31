@@ -8,8 +8,8 @@ class Test1 {
 		
 /*		
 		반복문(for,while,do~while)
-		for:시작과 끝값이 정해져있을 때
-		while:끝값이 정해져있지 않을 때
+		for:시작과 끝 값이 정해져있을 때
+		while:끝 값이 정해져있지 않을 때
 		do~while:1번은 무조건 실행시키고 확인해야 할때
 */
 		//선언
@@ -18,7 +18,7 @@ class Test1 {
 		
 		//입력
 		System.out.print("단 입력?");
-		dan = sc.nextInt(); //Scanner 안에 있는 메소드 : .nextInt(). 반드시 Scanner 가 먼저 정의되어 있어야 함
+		dan = sc.nextInt(); //Scanner 안에 있는 메소드 : nextInt() 반드시 Scanner 가 먼저 정의되어 있어야 함
 
 		//for(초기값;최대값_조건;증가값)
 		for (int i=1;i<=9;i++) {

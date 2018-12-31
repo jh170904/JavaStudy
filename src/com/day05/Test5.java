@@ -39,16 +39,6 @@ public class Test5 {
 			System.out.print("점수?");
 			score[i]=sc.nextInt();
 		}
-/*		
-		//순위작성
-		for(i=0;i<inwon;i++){
-			for(j=0;j<inwon;j++){
-				if(score[i]<score[j]){
-				rank[i]=rank[i]+1;					
-				}
-			}			
-		}
-*/
 		
  		//순위작성. if문 사용
 		for (i = 0; i < inwon - 1; i++) {
@@ -59,7 +49,6 @@ public class Test5 {
 					rank[i]++;
 			}
 		}
-		
 		
 		//정렬 후 출력
 		System.out.printf("이름   점수    석차\n");

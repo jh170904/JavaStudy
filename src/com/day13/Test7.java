@@ -20,6 +20,7 @@ public class Test7 {
 				//throw로 예외를 의도적으로 발생 시킴
 				//throw를 사용할려면 반드시 throws Exception을 기술한다 
 				//try.. catch문으로 감싸준다.
+				
 				throw new Exception("연산자 입력 오류!");//이 메세지를 Exception에 전달			
 			}		
 		

@@ -28,7 +28,7 @@ public class Test4 {
 			su++;		
 		}
 
-		// 정렬
+		// 선택정렬
 		for (i = 0; i < num.length - 1; i++) {
 			for (j = i + 1; j < num.length; j++) {
 				if (num[i] > num[j]) {

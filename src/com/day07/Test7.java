@@ -18,7 +18,8 @@ class Score {
 	int inwon;
 	Record[] rec;
 	Scanner sc = new Scanner(System.in);
-
+	String[] title = { "국어", "영어", "수학" };
+	
 	public void set() {
 
 		do {
@@ -31,7 +32,6 @@ class Score {
 
 	public void input() {
 
-		String[] title = { "국어", "영어", "수학" };
 
 		for (int i = 0; i < inwon; i++) {
 
@@ -55,12 +55,12 @@ class Score {
 	public void print() {
 
 		for (int i = 0; i < inwon; i++) {
-			System.out.printf("%d번째 이름 %6s", i, rec[i].name);
+			System.out.printf("%d번째 이름 %6s", i+1, rec[i].name);
 			for (int j = 0; j < 3; j++) {
-				System.out.printf("%4d%s", rec[i].score[j],rec[i].level[j]);
+				System.out.printf("%s:%d%s  ", title[j],  rec[i].score[j],rec[i].level[j]);
 			}
-			System.out.printf("%4d", rec[i].tot);
-			System.out.printf("%4d", rec[i].ave);
+			System.out.printf("총점:%d  ", rec[i].tot);
+			System.out.printf("평균:%d  ", rec[i].ave);
 			System.out.println();
 		}
 

@@ -47,7 +47,7 @@ public class Test1 {
 		//Bubble Sort : 이웃하는 수끼리 비교
 		for(i=1;i<num.length;i++){
 			for(j=0;j<num.length-i;j++){
-				//System.out.println(i +":"+ j);
+				//System.out.println(i +":"+ j); //인덱스 조회
 				if(num[j]>num[j+1]){
 					temp = num[j];
 					num[j] = num[j+1];

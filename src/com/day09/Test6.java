@@ -10,7 +10,7 @@ public class Test6 {
 	
 	public void stringTime(){ //쓰레기값이 많이생김, a, aa, aaa, aaaa ... 모두 저장됨.
 		
-		System.out.println("String...");
+		System.out.println("stringTime...");
 		//long start = System.currentTimeMillis(); //시스템의 초시간을 재겠다
 		long start = System.nanoTime(); //시작시간 
 		String str = "A";
@@ -24,7 +24,7 @@ public class Test6 {
 
 	public void stringBufferTime(){ //누적시키는 것. append메소드 이용.
 	
-		System.out.println("StringBuffer...");
+		System.out.println("stringBufferTime...");
 		long start = System.nanoTime(); //시작시간 
 		
 		StringBuffer str = new StringBuffer("A");
@@ -38,7 +38,7 @@ public class Test6 {
 	}
 	
 	public void stringBuilderTime(){
-		System.out.println("StringBuffer...");
+		System.out.println("stringBuilderTime...");
 		long start = System.nanoTime(); //시작시간 
 		
 		StringBuilder str = new StringBuilder("A");
