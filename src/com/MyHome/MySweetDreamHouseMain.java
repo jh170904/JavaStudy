@@ -2,8 +2,6 @@ package com.MyHome;
 
 import java.util.Scanner;
 
-import com.excep.AuthenException;
-
 public class MySweetDreamHouseMain {
 
 	public static void main(String[] args) throws AuthenException {
@@ -11,11 +9,12 @@ public class MySweetDreamHouseMain {
 		Scanner sc = new Scanner(System.in);
 		JoinImpl ji = new JoinImpl();
 		Picture pi = new Picture();
+		
 		int ch;
 		
 		while(true){
 			
-			pi.run();
+			pi.city1();
 			do {
 				System.out.println("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
 				System.out.print("□\t\t\t서울시 내 마음에 쏙 드는 부동산 찾기\t\t\t      □\n");
@@ -31,6 +30,9 @@ public class MySweetDreamHouseMain {
 			case 2:
 				LoginMain.main(args);
 			case 3:
+				
+			case 4:
+				
 			default:
 				System.exit(0);
 			}

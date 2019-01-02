@@ -4,11 +4,13 @@ import java.io.Serializable;
 
 public class JoinVO implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	String id;		//아이디
 	String pw;		//비밀번호
 	String name;	//이름
-	int type;		//1.부동산, 2.판매자/구매자
 	String phone;	//휴대폰 번호
+	int type;		//1.부동산, 2.판매자/구매자
 	
 	public String getId() {
 		return id;
@@ -68,9 +70,9 @@ public class JoinVO implements Serializable {
 		
 		String str2;
 		if(type==1){
-			str2 = String.format("중개업자 \t\t %s \t\t %s \t\t %s", id,name, phone);
+			str2 = String.format("중개업자 \t %10s  %6s \t %10s", id,name, phone);
 		}else{
-			str2 = String.format("구매자/판매자 \t\t %s \t\t %s \t\t %s", id,name,phone);
+			str2 = String.format("구매자/판매자 \t %10s  %6s \t %10s", id,name,phone);
 		}
 		return str2;
 	}

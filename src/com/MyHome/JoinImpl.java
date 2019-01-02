@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.excep.AuthenException;
-
 public class JoinImpl implements Join {
 
 	private List<JoinVO> lists;
@@ -48,16 +46,12 @@ public class JoinImpl implements Join {
 	}
 
 	public void print(){
-		System.out.println("---------------------------------------------------------------------");
-		System.out.println("등록구분\t\t아이디\t\t이름\t\t핸드폰번호");
-		System.out.println("---------------------------------------------------------------------");
 		Iterator<JoinVO> it = lists.iterator();
 		
 		while(it.hasNext()){
 			JoinVO vo = it.next();
 			System.out.println(vo.toPrint());
 		}
-		System.out.println();
 	}
 	
 	

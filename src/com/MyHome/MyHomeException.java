@@ -33,5 +33,22 @@ public class MyHomeException {
 			throw new AuthenException("1~5사이의 숫자를 입력해주세요");
 		
 	}
+	
+	public void localCheck(String local) throws AuthenException{
+		
+		int check = 0;
+		String localCheck[] = {"강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구",
+							   "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구","영등포구", "용산구", "은평구",
+							   "종로구", "중구", "중랑구"};
+		
+		for(String s : localCheck){
+			if(local.equals(s))
+				check = 1;
+		}
+		
+		if(check == 0)
+			throw new AuthenException("\n지역을 제대로 입력해주세요. \n[XX구]형식으로 입력해주세요");
+		
+	}
 
 }

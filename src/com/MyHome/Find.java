@@ -89,15 +89,26 @@ public class Find {
 	
 	public void local() throws IOException{
 		
-		System.out.print("지역:");
-		local = sc.next();
+		check = true;
+		do{
+			try{
+				System.out.print("지역[XX구]:");
+				local = sc.next();
+				
+				my.localCheck(local);
+				check = false;
+				
+			}catch (AuthenException e) {
+				System.out.println(e.toString());
+			}
+		}while(check);
 		
 	}
 	
 	public void price() throws IOException{
 		
 		System.out.print("가격:");
-		price = sc.nextInt();	
+		price = sc.nextLong();	
 		
 	}
 }

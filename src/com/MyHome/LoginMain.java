@@ -2,8 +2,6 @@ package com.MyHome;
 
 import java.util.Scanner;
 
-import com.excep.AuthenException;
-
 public class LoginMain {
 
 	public static void main(String[] args) throws AuthenException {
@@ -35,9 +33,10 @@ public class LoginMain {
 		while (true) { // 로그인 후 세부 메뉴
 			
 			do {
-				System.out.println("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
-				System.out.print("□1. 매물 등록\t2. 매물 검색\t3. 부동산 상담예약\t4. 계약 체결 등록 \t5.로그아웃 \t6.가입회원 열람 □\n");
-				System.out.println("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+				System.out.print("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□\n");
+				System.out.print("□1. 매물 등록        2. 매물 검색        3. 부동산 상담예약       4. 상담 예약 확인  □\n");
+				System.out.print("□5. 계약 체결 등록   6. 로그아웃         7. 가입회원 열람                            □\n");
+				System.out.print("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□\n");
 				ch1 = sc.nextInt();
 			} while (ch1 < 1);
 
@@ -53,12 +52,18 @@ public class LoginMain {
 				mhi.reserve(id);
 				break;
 			case 4:
-				mhi.contract(id);
+				mhi.readingReserve(id);
 				break;
 			case 5:
-				sweet.main(args);
+				mhi.contract(id);
+				break;
 			case 6:
+				sweet.main(args);
+			case 7:
 				if(id.substring(0,5).equals("admin")){
+					System.out.println("***********************회원 가입 내역***********************\n");
+					System.out.println("   구분              아이디      이름     핸드폰 번호");
+					System.out.println("-----------------------------------------------------------");
 					ji.print(); 
 				}else{
 					System.out.println("관리자 계정이 아니므로 열람이 불가능합니다.");

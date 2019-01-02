@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import com.naver2.NaverVO;
+
 public class SearchHome {
 	
 	private List<MyHomeVO> myhomeLists;
@@ -20,13 +22,13 @@ public class SearchHome {
 	MyHomeException my = new MyHomeException();
 	
 	int cnt;
-	boolean flag=false;
+	boolean flag;
 	
 	public SearchHome(){
 		
 		try {
 			
-			//매물정보 유뮤 확인
+			//매물정보 유무 확인
 			if(!myhomef.getParentFile().exists()){
 				myhomef.getParentFile().mkdirs();
 			}
@@ -34,10 +36,16 @@ public class SearchHome {
 			if(myhomef.exists()){
 				FileInputStream myhomeFis = new FileInputStream(myhomef);
 				ObjectInputStream myhomeOis = new ObjectInputStream(myhomeFis);
+				
 				myhomeLists = (ArrayList<MyHomeVO>)myhomeOis.readObject();
+				
 				myhomeFis.close();
 				myhomeOis.close();
 				
+			}
+			
+			if (myhomeLists == null) {// lists가 생성이 안되어 있으면 객체 생성 진행.
+				myhomeLists = new ArrayList<MyHomeVO>();
 			}
 			
 		} catch (Exception e) {
@@ -48,6 +56,7 @@ public class SearchHome {
 	public void itemSearch(String item) throws IOException{
 		
 		cnt=1;
+		flag=false;
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
 		
@@ -69,6 +78,7 @@ public class SearchHome {
 	public void termSearch(String term) throws IOException{
 		
 		cnt=1;
+		flag=false;
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
 		
@@ -90,6 +100,7 @@ public class SearchHome {
 	public void localSearch(String local) throws IOException{
 	
 		cnt=1;
+		flag=false;
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
 		
@@ -111,13 +122,15 @@ public class SearchHome {
 	public void priceSearch(long price) throws IOException{
 	
 		cnt=1;
+		flag=false;
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
 	
 		while(it.hasNext()){
 			MyHomeVO vo = it.next();
+			long comparep = vo.getPrice();
 			
-			if( vo.getPrice()>(price-50000000) && (price+50000000)< vo.getPrice() ) {
+			if((comparep>=(price-50000000)) && ((price+50000000)<=comparep)) {
 				System.out.println(cnt+ "번 매물");
 				System.out.println(vo.toString());		
 				cnt++;

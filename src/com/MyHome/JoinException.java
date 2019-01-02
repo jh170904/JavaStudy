@@ -1,6 +1,6 @@
 package com.MyHome;
 
-import com.excep.AuthenException;
+import java.util.regex.Pattern;
 
 public class JoinException {
 	
@@ -8,7 +8,7 @@ public class JoinException {
 	public void idFormat(String str) throws AuthenException{
 		
 		if(str.length()<5 || str.length()>10){
-			throw new AuthenException("5~10ÀÚ ÀÌ³»ÀÇ ¾ÆÀÌµğ¸¸ °¡´ÉÇÕ´Ï´Ù");
+			throw new AuthenException("¡Ø5~10ÀÚ ÀÌ³»ÀÇ ¾ÆÀÌµğ¸¸ °¡´ÉÇÕ´Ï´Ù");
 		}
 		
 		int cnt1=0;
@@ -23,27 +23,42 @@ public class JoinException {
 		}
 	
 		if(cnt1==0 || cnt2==0)
-			throw new AuthenException("¾ÆÀÌµğ´Â ¿µ¹®ÀÚ¿Í ¼ıÀÚ¸¦ È¥¿ëÇØ¼­ ¸¸µé¾îÁÖ¼¼¿ä");	
+			throw new AuthenException("¡Ø¾ÆÀÌµğ´Â ¿µ¹®ÀÚ¿Í ¼ıÀÚ¸¦ È¥¿ëÇØ¼­ ¸¸µé¾îÁÖ¼¼¿ä");	
 		
 	}
 	
 	//¾ÆÀÌµğ Áßº¹¿©ºÎ È®ÀÎ
 	public void sameId() throws AuthenException {
-		throw new AuthenException("µ¿ÀÏÇÑ ¾ÆÀÌµğ°¡ ÀÌ¹Ì Á¸ÀçÇÕ´Ï´Ù");	
+		throw new AuthenException("¡Øµ¿ÀÏÇÑ ¾ÆÀÌµğ°¡ ÀÌ¹Ì Á¸ÀçÇÕ´Ï´Ù");	
 	}
 	
 	
 	//ºñ¹Ğ¹øÈ£ È®ÀÎ
 	public void pwCheck(String pw1, String pw2) throws AuthenException{
 		if(!pw1.equals(pw2))
-			throw new AuthenException("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù");	
+			throw new AuthenException("¡Øºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù");	
+	}
+	
+	//ÀÌ¸§ È®ÀÎ
+	public void nameCheck(String name) throws AuthenException{
+
+		boolean check = Pattern.matches("^[¤¡-¤¾°¡-ÆR]*$", name);
+		if(!check)
+			throw new AuthenException("¡ØÀÌ¸§Àº ÇÑ±Û·Î ÀÔ·ÂÇØÁÖ¼¼¿ä");	
 	}
 
+	//ÀüÈ­¹øÈ£ È®ÀÎ
+	public void phoneCheck(String phone) throws AuthenException{
+
+		boolean check = Pattern.matches("(010|011|016|017|018?019)-(\\d{3,4})-(\\d{4})", phone);
+
+		if(!check)
+			throw new AuthenException("¡ØÀüÈ­¹øÈ£ ÀÔ·Â Çü½ÄÀº [XXX-XXXX-XXXX]ÀÔ´Ï´Ù");	
+	}
 	
 	//Áß°³¾÷ÀÚ, ÆÇ¸ÅÀÚ/±¸¸ÅÀÚ È®ÀÎ
 	public void typeCheck(int type) throws AuthenException{
-		if(!(type==1)&&!(type==2)){
-			throw new AuthenException("¹øÈ£¸¦ ¹Ù¸£°Ô ÀÔ·ÂÇØÁÖ¼¼¿ä");
-		}
+		if(!(type==1) && !(type==2))
+			throw new AuthenException("¡Ø¹øÈ£¸¦ ¹Ù¸£°Ô ÀÔ·ÂÇØÁÖ¼¼¿ä");
 	}
 }
