@@ -1,4 +1,5 @@
 package day03;
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -11,8 +12,8 @@ public class Sol2 {
 
     // Complete the solve function below.
     static void solve(double meal_cost, int tip_percent, int tax_percent) {
-       double totalCost = meal_cost + meal_cost*tip_percent + meal_cost*tax_percent;
-       
+       double cost = meal_cost + meal_cost*tip_percent/100 + meal_cost*tax_percent/100;
+       int totalCost = (int) Math.round(cost);
         System.out.println(totalCost);
     }
 
