@@ -1,7 +1,5 @@
 package com.day12;
 
-import com.day12.Outer1.Inner1;
-
 //내부클래스(inner) 
 //클래스 안에 클래스를 생성. Nested class
 //클래스는 메소드안, 클래스안에 또 정의해도 문제 없음. 단, 괄호 잘 맞춰줘야 함

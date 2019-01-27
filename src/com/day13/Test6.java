@@ -2,8 +2,6 @@ package com.day13;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Scanner;
-
 //Exception 클래스 (예외처리)
 
 //코딩상에는 에러가 없는 데 실행하다가 오류가 발생하는 것을 Runtime Error
@@ -15,9 +13,6 @@ public class Test6 {
 
 		int a, b, result;
 		String oper;
-
-		// Scanner sc= new Scanner(System.in);
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		// try{}에서 에러가 발생하게 되면 catch 가 잡아냄.
@@ -65,10 +60,7 @@ public class Test6 {
 		} finally {//에러발생시 해당하는 에러부분의 catch문이 실행되고 finally가 항상 실행.
 			
 			System.out.println("난 항상 보인다");
-		}
-		
+		}		
 		System.out.println("여기는 try밖...");
-
 	}
-
 }

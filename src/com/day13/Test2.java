@@ -65,12 +65,7 @@ public class Test2 {
 		while(it.hasNext()){
 			String key = it.next();//key
 			String value = h.get(key);//Map에 key값을 넣으면 value 반환
-			System.out.println(key + ":" + value );
-
-			
-		}
-		
-		
+			System.out.println(key + ":" + value );			
+		}			
 	}
-
 }

@@ -3,10 +3,8 @@ package com.day12;
 import java.util.Vector;
 
 class Test{
-	
 	String name;
 	int age;
-	
 }
 
 public class Test8 {
@@ -32,9 +30,6 @@ public class Test8 {
 		//Test ob가 가지고 있는 주소값은 한번 쓰고 필요가 없음. 벡터 v에 다 넣어놨음
 		for(Test t: v){
 			System.out.println(t.name + ":" + t.age);
-		}
-		
-		
+		}	
 	}
-
 }

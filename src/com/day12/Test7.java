@@ -1,6 +1,5 @@
 package com.day12;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Vector;
@@ -10,7 +9,7 @@ public class Test7 {
 	private static final String city[] = {"서울","부산","대구","인천","광주","대전","울산"};
 
 	public static void main(String[] args) {
-		//Generic. 제너릭
+
 		Vector<String> v = new Vector<String>();
 		
 		String str;

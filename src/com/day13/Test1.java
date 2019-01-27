@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import org.w3c.dom.ls.LSInput;
-
 public class Test1 {
 
 	public static void main(String[] args) {
@@ -69,11 +67,5 @@ public class Test1 {
 				System.out.println(str);
 			}
 		}
-		
-		
-		
-		
 	}
-	
-
 }

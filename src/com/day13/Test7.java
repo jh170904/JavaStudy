@@ -58,8 +58,6 @@ public class Test7 {
 			
 		} catch (Exception e) { //Try문에서 에러 발생시 catch가 잡아냄
 			System.out.println(e.toString());
-		}
-		
+		}	
 	}
-
 }
