@@ -107,31 +107,42 @@ public class ReserveVO implements Serializable, Runnable {
 		    System.out.println(".------------------------------------------------------.");
 		    System.out.println("|                                                      |");
 			Thread.sleep(100);
-		    System.out.println("|                                                      |");
+		    System.out.println("                                                       ");
 		    System.out.println("|        부  동  산  매  매  상  담  신  청  서        |");
 		    Thread.sleep(100);
+		    System.out.println("                                                       ");
+		    Thread.sleep(100);
+		    System.out.println("|                                                      |");
+			System.out.printf("    지역 : %5s                                    \n",local);
 			System.out.println("|                                                      |");
-			System.out.printf("|   지역 : %3s                  주거형태 :%4s   |\n",local, item);
 			Thread.sleep(100);
-			System.out.printf("|   계약형태 : %3s              가격 : %4s        |\n", term, won.priceWon(price));
+			System.out.printf("    주거형태 : %s                                  \n", item);
+			System.out.println("|                                                      |");
 			Thread.sleep(100);
-			System.out.printf("|   판매자 : %4s              신청자 : %4s     |\n", sellerName, buyerName);
+			System.out.printf("    계약형태 : %s                                  \n", term);
+			System.out.println("|                                                      |");
 			Thread.sleep(100);
-			System.out.printf("|   판매자 연락처:%10s                        |\n", sellerPhone);
+			System.out.printf("    가격 : %12s                            \n",won.priceWon(price));
+			System.out.println("|                                                      |");
 			Thread.sleep(100);
-			System.out.printf("|   신청자 연락처:%10s                        |\n", buyerPhone);
+			System.out.printf("    판매자 : %4s        연락처:%10s       \n", sellerName, sellerPhone);
+			System.out.println("|                                                      |");
+			Thread.sleep(100);
+			System.out.printf("    신청자 : %4s        연락처:%10s       \n",buyerName, buyerPhone);
+			System.out.println("|                                                      |");
+			Thread.sleep(100);
+			System.out.println("                                                      " );
 			Thread.sleep(100);
 			System.out.println("|                	상담 예약이 완료 되었습니다.   |");
 			Thread.sleep(100);
 			System.out.println(".-.     .-.     .-.     .-.     .-.     .-.     .-.    |");
 			Thread.sleep(100);
 		    System.out.println("   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'");
-			System.out.println("\n");
+			System.out.println("\n");          
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 	}
-
+	
 }

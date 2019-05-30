@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -25,15 +27,16 @@ class MyThread extends Thread{
 		
 			}
 		}
-		System.out.println();
+		System.out.println("\n");
 	}
 	
 }
 
-class Thread1 {
+class thread {
 
 	public static void th(){
 		MyThread t = new MyThread();
+		System.out.println();
 		System.out.print("검색중");
 		t.start();
 
@@ -59,7 +62,7 @@ public class MyHomeImpl extends Thread implements MyHome {
 	MyHomeException my = new MyHomeException();
 	Find find = new Find();
 	Won won = new Won();
-	Thread1 t = new Thread1();
+	thread t = new thread();
 	
 	public MyHomeImpl() {
 		
@@ -176,6 +179,7 @@ public class MyHomeImpl extends Thread implements MyHome {
 			vo.setLocal(find.local);
 			vo.setPrice(find.price);
 			vo.setId(id);
+			vo.setPop(0);
 			
 			FileInputStream fisjoin = new FileInputStream(joinf);
 			ObjectInputStream oisjoin = new ObjectInputStream(fisjoin);
@@ -199,7 +203,6 @@ public class MyHomeImpl extends Thread implements MyHome {
 			myhomeLists = new ArrayList<MyHomeVO>();
 		
 		myhomeLists.add(vo);
-		System.out.println(vo);
 		
 		try {
 			if(myhomeLists!=null){	
@@ -208,12 +211,14 @@ public class MyHomeImpl extends Thread implements MyHome {
 				oos.writeObject(myhomeLists);
 				fos.close();
 				oos.close();
-				System.out.println("매물이 성공적으로 등록 되었습니다.");
+				System.out.println("\n매물이 성공적으로 등록 되었습니다.**");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		
+		System.out.println(vo.toString3()+"\n");
+	
 	}
 
 	@Override
@@ -236,8 +241,9 @@ public class MyHomeImpl extends Thread implements MyHome {
 					System.out.println("3.지역별");
 					System.out.println("4.가격");
 					System.out.println("5.검색종료");
-					System.out.print("입력:");
+					System.out.print("입력: ");
 					ch = sc.nextInt();
+					System.out.println();
 					
 				}while(ch<1);
 			
@@ -294,7 +300,6 @@ public class MyHomeImpl extends Thread implements MyHome {
 			find.term();
 			find.local();
 			find.price();
-
 			
 			//기존 파일 읽기(로그인된 id 통해 이름 찾기)
 			FileInputStream fisjoin = new FileInputStream(joinf);
@@ -335,6 +340,18 @@ public class MyHomeImpl extends Thread implements MyHome {
 					reserveVO.setSellerName(myhomeVO.getName()); //매물 등록 시 등록자(판매자의 이름) 
 					reserveVO.setSellerPhone(myhomeVO.getPhone());
 					reserveVO.setSellerId(myhomeVO.getId());
+					
+					//상담 예약 건수 적립
+					myhomeVO.setPop(myhomeVO.getPop()+1);
+					myhomeLists.remove(myhomeVO);
+					myhomeLists.add(myhomeVO);
+					
+					FileOutputStream fos = new FileOutputStream(myhomef);
+					ObjectOutputStream oos = new ObjectOutputStream(fos);
+					oos.writeObject(myhomeLists);
+					fos.close();
+					oos.close();
+					
 					flagrv = true;
 					reserveVO.run();
 				}
@@ -344,6 +361,11 @@ public class MyHomeImpl extends Thread implements MyHome {
 				reserveLists = new ArrayList<ReserveVO>();
 			
 			reserveLists.add(reserveVO);
+			
+			if(!flagrv){
+				System.out.println("해당 매물이 없습니다");
+				reserveLists.remove(reserveVO);
+			}
 			
 			try {
 
@@ -356,10 +378,6 @@ public class MyHomeImpl extends Thread implements MyHome {
 				}
 			} catch (Exception e) {
 
-			}
-			
-			if(!flagrv){
-				System.out.println("해당 매물이 없습니다");
 			}
 			
 			fisjoin.close();
@@ -386,21 +404,68 @@ public class MyHomeImpl extends Thread implements MyHome {
 		
 		while(it.hasNext()){
 			ReserveVO vo = it.next();
-/*			System.out.println(id);
-			System.out.println(vo.getBuyerId());
-			System.out.println(vo.getSellerId());*/
 			if(id.equals(vo.getBuyerId()) || id.equals(vo.getSellerId())){
 				System.out.println(vo.toString());
 				flag = true;
 			}
-			System.out.println();
 		}
+		System.out.println();
 		
 		if(!flag)
 			System.out.println("예약이 없습니다.");
 	
 	}
+	
+	
+	@Override
+	public void popRanking() {
+		
+		try{
+			FileInputStream fis = new FileInputStream(myhomef);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			myhomeLists = (List<MyHomeVO>)ois.readObject();
 
+
+			Comparator<MyHomeVO> comp = new Comparator<MyHomeVO>() {
+				@Override
+				public int compare(MyHomeVO vo1, MyHomeVO vo2) {
+					return vo1.getPop()<vo2.getPop()?1:-1;
+				}
+			};
+
+			Collections.sort(myhomeLists, comp);
+
+			Iterator<MyHomeVO> it = myhomeLists.iterator();
+			
+
+			int cnt=1;
+			while(it.hasNext()){
+				MyHomeVO vo = it.next();	
+				if(vo.getPop()>0){
+					if(cnt==1){
+						System.out.println("-------------------------------------------------------------------------");
+						System.out.println("   등록자       지역      주거형태       계약형태       금액       ");
+						System.out.println("-------------------------------------------------------------------------");
+					}
+					System.out.print(cnt);
+					System.out.println(vo.toString());
+					System.out.println();
+
+					if(cnt>4)
+						return;
+					
+					cnt++;
+				}
+
+			}
+			if(cnt==1)
+				System.out.println("인기 매물이 없습니다.");
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+	
+	}
 	
 	@Override
 	public void contract(String id) {//계약 후 삭제
@@ -409,7 +474,8 @@ public class MyHomeImpl extends Thread implements MyHome {
 		try {
 			
 			System.out.println("********체결된 매물을 입력하세요*********");
-			MyHomeVO contractVO = new MyHomeVO();
+			//MyHomeVO contractVO = new MyHomeVO();
+			ContractVO  contractVO = new ContractVO();
 			find.item();
 			find.term();
 			find.local();
@@ -423,20 +489,20 @@ public class MyHomeImpl extends Thread implements MyHome {
 			
 			Iterator<JoinVO> it1 = joinLists.iterator();//회원가입정보
 
-			while(it1.hasNext())
-			{
+			while(it1.hasNext()){
 				JoinVO compareVO = it1.next();
 				if(id.equals(compareVO.id)){
-					name = compareVO.getName();
+					contractVO.setBuyerName(compareVO.getName());
+					contractVO.setBuyerPhone(compareVO.getPhone());
 				}
-			}		
-			
+			}
+
+			contractVO.setBuyerId(id);
 			contractVO.setItem(find.item);
 			contractVO.setTerm(find.term);
 			contractVO.setLocal(find.local);
 			contractVO.setPrice(find.price);
-			contractVO.setName(name);
-			
+	
 			FileInputStream fis = new FileInputStream(myhomef);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
@@ -446,39 +512,16 @@ public class MyHomeImpl extends Thread implements MyHome {
 			while(it2.hasNext()){		
 				MyHomeVO compareVO = it2.next();
 				if((contractVO.item.equals(compareVO.getItem()) && contractVO.term.equals(compareVO.getTerm()) &&
-						contractVO.local.equals(compareVO.getLocal()) && contractVO.price==compareVO.getPrice()&& 
-						contractVO.name.equals(compareVO.getName()))){
-
-					System.out.println("삭제 매물 정보 : \n"+contractVO.toString2());
-
+						contractVO.local.equals(compareVO.getLocal()) && contractVO.price==compareVO.getPrice())){
+					
+					contractVO.setSellerName(compareVO.getName()); //매물 등록 시 등록자(판매자의 이름) 
+					contractVO.setSellerPhone(compareVO.getPhone());
+					contractVO.setSellerId(compareVO.getId());
+					
 					try {
 						
 						myhomeLists.remove(compareVO);
-						System.out.println();
-						System.out.println(".------------------------------------------------------.");
-						sleep(500);
-						System.out.println("|                                                      |");
-						sleep(500);
-						System.out.println("|               부 동 산 매 매 계 약 서                |");
-						sleep(500);
-						System.out.println("|                                                      |");
-						sleep(500);
-						System.out.println("|"+" "+contractVO.toString2()    +"    "       +             "     |" );
-						sleep(500);
-						System.out.println("|                                                      |");
-						sleep(500);
-						System.out.println("|       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  @@@@   |");
-						sleep(500);
-						System.out.println("|                                              @ 체 @  |");
-						sleep(500);
-						System.out.println("|       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @ 결 @  |");
-						sleep(500);
-						System.out.println("|                                               @@@@   |");
-						sleep(500);
-						System.out.println(".-.     .-.     .-.     .-.     .-.     .-.     .-.    |");
-						sleep(500);
-						System.out.println("   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'");
-						sleep(500);
+						
 						
 					} catch (Exception e) {
 						// TODO: handle exception
@@ -492,6 +535,9 @@ public class MyHomeImpl extends Thread implements MyHome {
 							oos.close();
 							System.out.println("매물 정보가 성공적으로 삭제 되었습니다.\n");
 							flagrv = true;
+							
+							contractVO.run();
+							
 							return;
 						}
 				}

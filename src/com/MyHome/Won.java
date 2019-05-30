@@ -30,7 +30,9 @@ public class Won {
 			str += numi[4]+"";
 		
 		
-		if(numi[1]==0 && numi[2]==0 && numi[3]==0 && numi[4]==0)
+		if(price<10000)
+			str += price+"원";
+		else if(numi[1]==0 && numi[2]==0 && numi[3]==0 && numi[4]==0)
 			str += "원";
 		else
 			str += "만원";

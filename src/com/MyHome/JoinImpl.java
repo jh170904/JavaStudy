@@ -63,9 +63,13 @@ public class JoinImpl implements Join {
 		
 		String pw2=null;		//비밀번호 확인
 		String str=null;		//아이디 확인
+		String name=null;
+		String phone=null;
 		int type;
 		boolean id=true;
 		boolean pw=true;
+		boolean nameChack=true;
+		boolean phoneCheck=true;
 		boolean typeCheck=true;
 		
 		System.out.println("             회 원 가 입 ");
@@ -125,24 +129,52 @@ public class JoinImpl implements Join {
 			
 		}while(pw);
 		
-		try{
+		do{
+			try{
+				
+				System.out.print("이름:");
+				name=br.readLine();
+				
+				jo.nameCheck(name);
+				vo.setName(name);
+				nameChack = false;
+				
+			}  catch (IOException e) {
+				System.out.println(e.toString());
 			
-			System.out.print("이름:");
-			vo.setName(br.readLine());
+			} catch (AuthenException e) {
+				System.out.println(e.toString());
 			
-			System.out.print("전화번호:");
-			vo.setPhone(br.readLine());
+			}
+			
+		}while(nameChack);
 		
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		do{
+			try{
+			
+				System.out.print("전화번호:");
+				phone=br.readLine();
+				
+				jo.phoneCheck(phone);
+				vo.setPhone(phone);
+				phoneCheck = false;
+			
+			}  catch (IOException e) {
+				System.out.println(e.toString());
+			
+			} catch (AuthenException e) {
+				System.out.println(e.toString());
+			
+			}
+			
+		}while(phoneCheck);
+	
 		
 		do{
 			try{
 				System.out.println("해당하는 번호를 입력주세요");
 				System.out.print("1.부동산중개업자 2.구매자/판매자");
 				type = Integer.parseInt(br.readLine());
-				System.out.println(type);
 				jo.typeCheck(type);
 				
 				typeCheck = false;

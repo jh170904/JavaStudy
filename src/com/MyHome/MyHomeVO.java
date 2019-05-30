@@ -11,7 +11,14 @@ public class MyHomeVO implements Serializable {
 	String term; // 전세/매매/월세/단기임대 
 	String local;// 강남구, 논현구, 서초구
 	long price;	 // 0~5천 / 5천~1억미만 / 1억이상~5억 / 5억이상
+	int pop;
 	
+	public int getPop() {
+		return pop;
+	}
+	public void setPop(int pop) {
+		this.pop = pop;
+	}
 	public String getId() {
 		return id;
 	}
@@ -60,8 +67,8 @@ public class MyHomeVO implements Serializable {
 		
 		Won won = new Won();
 		
-		String str = String.format("[지역: %s, 주거형태: %s, 계약형태: %s, 금액: %s, 등록자: %s]", 
-						local, item, term, won.priceWon(price), name);
+		String str = String.format("  %3s     %5s     %3s     %7s    %10s", 
+				 name, local, item, term, won.priceWon(price));
 		return str;
 		
 	}
@@ -74,6 +81,15 @@ public class MyHomeVO implements Serializable {
 						local, item, term, won.priceWon(price), name);
 		return str;
 		
+	}
+	
+	public String toString3() {
+		
+		Won won = new Won();
+		
+		String str = String.format("지역:%s \n주거형태:%s  \n계약형태:%s  \n금액:%s", 
+						local, item, term, won.priceWon(price));
+		return str;
 	}
 	
 	

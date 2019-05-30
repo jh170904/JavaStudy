@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 
 public class Test8 extends Frame {
 
+	private static final long serialVersionUID = 1L;
 	private int x,y;
 	private Label lbl = new Label("",Label.CENTER);
 	
@@ -56,10 +57,8 @@ public class Test8 extends Frame {
 		public void mousePressed(MouseEvent evt) {
 
 			x = evt.getX();
-			y = evt.getY();
-			
-			repaint();//update호출
-			
+			y = evt.getY();			
+			repaint();//update호출		
 		}
 	}
 
@@ -67,25 +66,19 @@ public class Test8 extends Frame {
 
 		@Override
 		public void mouseDragged(MouseEvent evt) {//마우스를 누른 상태로 움직일떄
-
 			x = evt.getX();
 			y = evt.getY();
-			repaint();
-		
+			repaint();		
 		}
 
 		@Override
 		public void mouseMoved(MouseEvent e) {//마우스가 움직일 때
-
 			String str = String.format("(%d,%d)", e.getX(), e.getY());
-			lbl.setText(str);
-		
-		}
-		
+			lbl.setText(str);		
+		}		
 	}
 	
 	public static void main(String[] args) {
 		new Test8();
 	}
-
 }

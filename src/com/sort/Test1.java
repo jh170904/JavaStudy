@@ -10,10 +10,10 @@ import java.util.Comparator;
 import java.util.List;
 
 
-//?œ ?‹›?…Œ?Š¤?Š¸ ?™œ?š©
+//ìœ ë‹›í…ŒìŠ¤íŠ¸ í™œìš©
 public class Test1 {
 	
-	//1. int?˜• ë°°ì—´ ? •? ¬
+	//1. intí˜• ë°°ì—´ ì •ë ¬
 	@Test
 	public void sortInts(){
 		final int[] numbers = {-3,-5,1,7,4,-2};
@@ -23,7 +23,7 @@ public class Test1 {
 		assertArrayEquals(expected1,numbers);
 	}
 
-	//2. String?˜• ë°°ì—´ ? •? ¬
+	//2. Stringí˜• ë°°ì—´ ì •ë ¬
 	@Test
 	public void sortObjects(){
 		final String[] strings = {"z", "x", "y", "abc", "zzz", "zazzy"};
@@ -33,7 +33,7 @@ public class Test1 {
 		assertArrayEquals(expected2,strings);
 	}	
     
-    //3. Comparable ?¸?„°?˜?´?Š¤ ?‚¬?š©?•˜ì§? ?•Šê³? ? •? ¬?•˜ê¸?
+    //3. Comparable ì¸í„°í˜ì´ìŠ¤ ì‚¬ìš©í•˜ì§€ ì•Šê³  ì •ë ¬í•˜ê¸°
     @Test
     public void sortNotComparable() {
         final List<NotComparable> objects = new ArrayList<>();
@@ -51,15 +51,15 @@ public class Test1 {
         fail();
     }
 	
-	//3-1. ?´?„ˆ?´?˜?Š¤ ?ƒ?„±
+	//3-1. ì´ë„ˆí´ë˜ìŠ¤ ìƒì„±
     private static class NotComparable {
         private int i;
-        private NotComparable(final int i) {//?ƒ?„±?ë¡? ë³??ˆ˜ ì´ˆê¸°?™”
+        private NotComparable(final int i) {//ìƒì„±ìë¡œ ë³€ìˆ˜ ì´ˆê¸°í™”
             this.i = i;
         }
     }
 	
-	//4. ?‚¬?š©?ê°? ì§?? •?•œ ?ˆœ?„œë¡? ? •? ¬?•˜ê¸?
+	//4. ì‚¬ìš©ìê°€ ì§€ì •í•œ ìˆœì„œë¡œ ì •ë ¬í•˜ê¸°
 	@Test
 	public void customSort(){
 		final List<Integer> numbers = Arrays.asList(4,7,1,6,3,5,4);

@@ -96,10 +96,6 @@ public class Test7 extends Frame implements ActionListener{
 			} catch (Exception e2) {
 				tf3.setText("입력 오류!!");
 			}
-			
 		}
-		
-		
 	}
-
 }

@@ -10,7 +10,7 @@ public class Find {
 	String term ="";
 	String local ="";
 	long price =0;
-	
+	String pr = "";
 	boolean check;
 	
 	MyHomeException my = new MyHomeException();
@@ -24,7 +24,7 @@ public class Find {
 		do{
 			try {
 				
-				System.out.println("주거형태를 입력하시오[번호로 입력해주세요]");
+				System.out.println("▶주거형태를 입력하시오[번호로 입력해주세요]");
 				System.out.print("1.아파트 2.빌라 3.상가 4.토지 : ");
 				
 				choice = sc.nextInt();
@@ -34,11 +34,11 @@ public class Find {
 				case 1:
 					item = "아파트"; break;
 				case 2:
-					item = "빌라"; break;
+					item = "빌  라"; break;
 				case 3:
-					item = "상가"; break;
+					item = "상  가"; break;
 				case 4:
-					item = "토지"; break;
+					item = "토  지"; break;
 				default:
 					my.homeCheck();			//1-4사이의 숫자가 아닐경우 
 				}
@@ -54,13 +54,13 @@ public class Find {
 	}
 	
 	
-	public void term() throws IOException{
+	public void term() {
 		
 		check = true;
 		do{
 			try {
 				
-				System.out.println("계약형태를 고르시오[번호로 입력해주세요]");
+				System.out.println("▶계약형태를 고르시오[번호로 입력해주세요]");
 				System.out.print("1.전세 2.월세 3.매매 : ");
 				
 				choice = sc.nextInt();
@@ -68,11 +68,11 @@ public class Find {
 				
 				switch (choice) {
 				case 1:
-					term = "전세"; break;
+					term = "전  세"; break;
 				case 2:
-					term = "월세"; break;
+					term = "월  세"; break;
 				case 3:
-					term = "매매"; break;
+					term = "매  매"; break;
 				default:
 					my.homeCheck();			//1-3사이의 숫자가 아닐경우 
 				}
@@ -92,7 +92,7 @@ public class Find {
 		check = true;
 		do{
 			try{
-				System.out.print("지역[XX구]:");
+				System.out.print("▶지역[XX구]:");
 				local = sc.next();
 				
 				my.localCheck(local);
@@ -107,8 +107,22 @@ public class Find {
 	
 	public void price() throws IOException{
 		
-		System.out.print("가격:");
-		price = sc.nextLong();	
+		check = true;
+		do{
+			try {
+				System.out.print("▶가격:");
+				pr = sc.next();
+				
+				my.check(pr);
+				price = Integer.parseInt(pr);
+				check = false;
+				
+			} catch (AuthenException e) {
+				System.out.println(e.toString());
+			}
+			
+		}while(check);
+		
 		
 	}
 }

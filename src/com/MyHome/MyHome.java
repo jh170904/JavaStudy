@@ -6,6 +6,7 @@ public interface MyHome {
 	public void iteminput(String id);//부동산 매물 등록
 	public void search();//매물검색
 	public void reserve(String id);//상담 예약
+	public void popRanking();
 	public void readingReserve(String id);//예약 확인 
 	public void contract(String id);//계약체결(매물삭제)
 

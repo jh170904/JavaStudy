@@ -18,7 +18,6 @@ public class Test1 {
 	public static void main(String[] args) {
 		
 		try {
-			
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String host;
 			
@@ -30,10 +29,7 @@ public class Test1 {
 			System.out.println("È£½ºÆ®: " + ia.getHostName());
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.toString());
 		}
-		
-		
 	}
-
 }

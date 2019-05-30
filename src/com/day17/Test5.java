@@ -11,7 +11,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Test5 extends Frame implements ActionListener{
-	
+
+	private static final long serialVersionUID = 1L;
 	private TextField tf;	//텍스트 입력받는 부분
 	private TextArea ta;	//텍스트 보이는 부분
 	private Button btn;		//버튼

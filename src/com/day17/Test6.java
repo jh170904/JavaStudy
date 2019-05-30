@@ -147,4 +147,4 @@ public class Test6 extends Frame implements ActionListener {
 		
 	}//end-KeyHandler
 	
-}
+}//end-class

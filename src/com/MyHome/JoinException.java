@@ -61,4 +61,10 @@ public class JoinException {
 		if(!(type==1) && !(type==2))
 			throw new AuthenException("※번호를 바르게 입력해주세요");
 	}
+	
+	public void n(String n) throws AuthenException{
+
+		if( !n.equals("1") && !n.equals("2") && !n.equals("3") && !n.equals("9"))
+			throw new AuthenException("※번호를 제대로 입력해주세요");	
+	}
 }

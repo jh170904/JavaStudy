@@ -9,8 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import com.naver2.NaverVO;
-
 public class SearchHome {
 	
 	private List<MyHomeVO> myhomeLists;
@@ -60,16 +58,21 @@ public class SearchHome {
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
 		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.println("           등록자       지역      주거형태       계약형태       금액       ");
+		System.out.println("-------------------------------------------------------------------------");
+		
 		while(it.hasNext()){
 			MyHomeVO vo = it.next();
 			
 			if(item.equals(vo.getItem())){
-				System.out.println(cnt+ "번 매물");
+				System.out.print(cnt+ "번 매물");
 				System.out.println(vo.toString());
 				cnt++;
 				flag = true;
 			}
 		}
+		System.out.println();
 		
 		noHome(flag);
 	}
@@ -82,16 +85,21 @@ public class SearchHome {
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
 		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.println("           등록자       지역      주거형태       계약형태       금액       ");
+		System.out.println("-------------------------------------------------------------------------");
+		
 		while(it.hasNext()){
 			MyHomeVO vo = it.next();
 			
 			if(term.equals(vo.getTerm())){
-				System.out.println(cnt+ "번 매물");
+				System.out.print(cnt+ "번 매물");
 				System.out.println(vo.toString());
 				cnt++;
 				flag = true;
 			}
 		}
+		System.out.println();
 		
 		noHome(flag);
 		
@@ -104,16 +112,21 @@ public class SearchHome {
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
 		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.println("           등록자       지역      주거형태       계약형태       금액       ");
+		System.out.println("-------------------------------------------------------------------------");
+		
 		while(it.hasNext()){
 			MyHomeVO vo = it.next();
 			
 			if(local.equals(vo.getLocal())){
-				System.out.println(cnt+ "번 매물");
+				System.out.print(cnt+ "번 매물");
 				System.out.println(vo.toString());	
 				cnt++;
 				flag = true;
 			}
 		}
+		System.out.println();
 		
 		noHome(flag);
 		
@@ -125,18 +138,23 @@ public class SearchHome {
 		flag=false;
 		
 		Iterator<MyHomeVO> it = myhomeLists.iterator();
+		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.println("           등록자       지역      주거형태       계약형태       금액       ");
+		System.out.println("-------------------------------------------------------------------------");
 	
 		while(it.hasNext()){
 			MyHomeVO vo = it.next();
 			long comparep = vo.getPrice();
 			
-			if((comparep>=(price-50000000)) && ((price+50000000)<=comparep)) {
-				System.out.println(cnt+ "번 매물");
+			if((comparep>=(price-50000000)) && ((price+50000000)>=comparep)) {
+				System.out.print(cnt+ "번 매물");
 				System.out.println(vo.toString());		
 				cnt++;
 				flag = true;
 			}
 		}
+		System.out.println();
 		
 		noHome(flag);
 	

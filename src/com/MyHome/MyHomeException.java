@@ -1,5 +1,7 @@
 package com.MyHome;
 
+import java.util.regex.Pattern;
+
 public class MyHomeException {
 	
 	//로그인(아이디 확인)
@@ -22,6 +24,13 @@ public class MyHomeException {
 			throw new AuthenException("번호를 제대로 입력주세요");
 	}
 	
+	public void n(String n) throws AuthenException{
+		
+		if( !n.equals("1") && !n.equals("2") && !n.equals("3") && !n.equals("4") && !n.equals("5")
+				&& !n.equals("6") && !n.equals("7") && !n.equals("8"))
+			throw new AuthenException("※번호를 제대로 입력해주세요");	
+	}
+	
 	
 	//매물검색시 1-5번 번호 입력 확인
 	public void searchCheck(Object choice) throws AuthenException{
@@ -31,6 +40,18 @@ public class MyHomeException {
 		
 		if((Integer)choice>5)
 			throw new AuthenException("1~5사이의 숫자를 입력해주세요");
+		
+	}
+	
+	public void check(String s) throws AuthenException{
+		
+		boolean check = false;
+		
+		if(Pattern.matches("^[0-9]*$", s))
+			check = true;
+		
+		if(!check)
+			throw new AuthenException("※가격은 숫자로만 입력해주세요");	
 		
 	}
 	

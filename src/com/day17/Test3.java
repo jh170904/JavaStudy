@@ -50,6 +50,4 @@ public class Test3 extends Frame implements WindowListener{
 	@Override
 	public void windowOpened(WindowEvent e) {//창이 처음 열릴 때
 	}
-
-	
 }
