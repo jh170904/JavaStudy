@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 /*
 	x만큼 간격이 있는 n개의 숫자
 	문제 설명

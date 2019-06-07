@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 
 /*
  * 문자열을 정수로 바꾸기

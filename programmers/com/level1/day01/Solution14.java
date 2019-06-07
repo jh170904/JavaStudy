@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 /*
  * 자릿수 더하기
 문제 설명

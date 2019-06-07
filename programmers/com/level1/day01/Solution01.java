@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 
 import java.util.Arrays;
 

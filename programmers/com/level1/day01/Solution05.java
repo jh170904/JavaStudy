@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 
 /*
  * 핸드폰 번호 가리기

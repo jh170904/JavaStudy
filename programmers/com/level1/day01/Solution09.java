@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 
 /*
  최대공약수와 최소공배수

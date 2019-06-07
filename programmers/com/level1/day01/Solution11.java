@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 
 /*
  * 정수 제곱근 판별

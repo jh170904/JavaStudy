@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 /*
  	행렬의 덧셈
  	문제 설명

@@ -1,4 +1,4 @@
-package com.level1;
+package com.level1.day01;
 
 /*
  * 자연수 뒤집어 배열로 만들기
