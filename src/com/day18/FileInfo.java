@@ -2,19 +2,19 @@ package com.day18;
 
 import java.io.Serializable;
 
-//직렬화 반드시 필요
-
+// 데이터를 주고 받기 위해서 직렬화 반드시 필요하다.
 public class FileInfo implements Serializable{
 
+	private static final long serialVersionUID = -7601500689412887280L;
+
 	/*	
-	code(임의로 설정)
-	100 : 파일전송 시작(파일명 전송)
-	110 : 파일 내용을 전송
-	200 : 파일전송 종료(파일명 전송)
-	size : 한번에 전송하는 크기
-	data : 내용
-	*/	
-	
+	 * 응답 결과를 주고 받는 code (개발자가 응답상태에 대하여 협의하여 정의한 코드)
+	 * 100 : 파일전송 시작(파일명 전송)
+	 * 110 : 파일 내용을 전송
+	 * 200 : 파일전송 종료(파일명 전송)
+	 * size : 한번에 전송하는 크기
+	 * data : 내용
+	 * */	
 	private int code;
 	private int size;
 	private byte[] data = new byte[1024];//한번에 전송가능한 데이터의 양은 1024byte로 설정
@@ -38,6 +38,4 @@ public class FileInfo implements Serializable{
 		this.data = data;
 	}
 	
-	
-
 }

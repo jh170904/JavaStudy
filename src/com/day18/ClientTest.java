@@ -15,7 +15,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ClientTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀÎÅÍÆäÀÌ½º 
+public class ClientTest extends Frame implements ActionListener, Runnable{//´ÙÁß ÀÎÅÍÆäÀÌ½º 
 
 	private static final long serialVersionUID = 1L;
 	private TextArea ta = new TextArea();
@@ -24,8 +24,11 @@ public class ClientTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 	//Å¬¶óÀÌ¾ðÆ®´Â ¼ÒÄÏ¸¸ ÇÊ¿ä
 	private Socket sc = null;
 	private int port = 5555;
-	private String host="192.168.16.16";//127.0.0.1(me, loopbackÁÖ¼Ò, ³×Æ®¿öÅ©¿¡¼­ ÀÚ±âÀÚ½Å)
+	private String host="127.0.0.1";//me, loopbackÁÖ¼Ò, ³×Æ®¿öÅ©¿¡¼­ ÀÚ±âÀÚ½ÅÀ» ÀÇ¹ÌÇÏ´Â Æ¯º°ÇÑ ÁÖ¼Ò
 	
+	/**
+	 * ±âº» »ý¼ºÀÚ¸¦ ÅëÇØ ActionListenerÀÇ ±âº»°ªÀ» ¼³Á¤ÇÑ´Ù.
+	 */
 	public ClientTest(){
 		
 		add(ta,BorderLayout.CENTER);
@@ -47,10 +50,16 @@ public class ClientTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 		setVisible(true);
 	}
 	
+	/**
+	 * ¾îÇÃ¸®ÄÉÀÌ¼ÇÀÌ ±¸µ¿µÇ¸é main¹®À» °¡Àå ¸ÕÀú Ã£¾Æ°¡°Ô µÇ°í ¿¬°á ¸Þ¼ÒµåÀ» ½ÇÇàÇÑ´Ù. 
+	 */
 	public static void main(String[] args) {
 		new ClientTest().connect();
 	}
 
+	/**
+	 * ¼³Á¤ÇÑ Æ÷Æ®¹øÈ£¿Í ¾ÆÀÌÇÇ ÁÖ¼Ò·Î ¼ÒÄÏÀ» »ý¼ºÇÑ´Ù. ÀÚ±âÀÚ½ÅÀ» ½º·¹µå °´Ã¼·Î »ý¼ºÇÏ¿© runÀ» È£ÃâÇÑ´Ù.
+	 */
 	public void connect(){
 
 		try {
@@ -63,6 +72,9 @@ public class ClientTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 		}
 	}
 	
+	/**
+	 * ¸Þ¼¼Áö¸¦ Àü¼ÛÇÑ´Ù.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -91,6 +103,9 @@ public class ClientTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 		}
 	}
 	
+	/**
+	 * ¸Þ¼¼Áö¸¦ ¼ö½ÅÇÑ´Ù.
+	 */
 	@Override
 	public void run() {
 		
@@ -109,12 +124,9 @@ public class ClientTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 				ta.append("\r\n" +str);
 			}
 		} catch (Exception e) {
-			ta.append("\r\n ¼­¹ö ¿¬°á Á¾·á!");
-			
+			ta.append("\r\n ¼­¹ö ¿¬°á Á¾·á!");			
 			//¼ÒÄÏ ÃÊ±âÈ­
 			sc = null; 
 		}
-	
 	}
-
 }

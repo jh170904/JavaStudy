@@ -19,6 +19,9 @@ public class Test1 extends Frame implements ActionListener{
 	private TextField tf;
 	private TextArea ta;
 	
+	/**
+	 * 생성자. ActionListener 설정 
+	 */
 	public Test1(){
 		
 		ta = new TextArea();
@@ -40,10 +43,16 @@ public class Test1 extends Frame implements ActionListener{
 		
 	}
 	
+	/**
+	 * 자바 실행 시 객체 생성 
+	 */
 	public static void main(String[] args) {
 		new Test1();
 	}
 
+	/**
+	 * 버튼 클릭 시 수행되는 메소드. 입력한 url의 데이터를 읽어와서 출력 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//https://www.naver.com : URL 
@@ -67,7 +76,7 @@ public class Test1 extends Frame implements ActionListener{
 			}
 			is.close();
 		} catch (Exception e2) {
-			// TODO: handle exception
+			e2.printStackTrace();
 		}
 		
 	}

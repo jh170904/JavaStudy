@@ -10,32 +10,30 @@ import java.util.List;
 
 public class MultiServerTest {
 
-	//클라이언트가 들어올 소켓 저장소
+	// 클라이언트가 접속한 소켓을 담을 저장소
 	private List<Socket> client = new ArrayList<Socket>();
 	
-	//서버시작메소드
-	public void serverStart(){
-		
-		try {
-			
-			ServerSocket ss = new ServerSocket(5555);
+	/**
+	 * 소켓 생성 및 클라이언트의 요청을 기다린다. 소켓이 생성되면 WorkThread에 할당한다.
+	 */
+	public void serverStart(){		
+		try (//포트 설정 및 서버 소켓 객체 생성.
+			ServerSocket serverSocket = new ServerSocket(5555);) {		
 			System.out.println("서버시작...");
 			
-			while(true){//몇명이 접속할지 모르니 무한루프
-				
-				Socket sc = ss.accept();//클라이언트가 접속되어있으면 진행, 소켓 생성. 접속을 안하면 딜레이 상태이므로 무한루프로 돌려도 문제 없음
-				WorkThread wt = new WorkThread(sc);//인원수만큼 소켓 생성하듯이, 스레드도 인원수만큼 만들어줌. 사람들이 말할때마다 스레드 번갈아 실행
+			while(true){//몇 명이 접속할지 모르니 무한루프
+				Socket socket = serverSocket.accept();//클라이언트가 접속되어있으면 진행, 소켓 생성. 접속을 안하면 딜레이 상태이므로 무한루프.
+				WorkThread wt = new WorkThread(socket);//인원수만큼 소켓 생성하듯이, 스레드도 인원수만큼 만들어줌. 사람들이 말할때마다 스레드 번갈아 실행
 				wt.start();//스레드 시작
-			
 			}
-			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
-		
 	}
 	
-	//스레드클래스
+	/**
+	 * 메세지 송수신 작업을 수하는 스레드 객체 
+	 */
 	class WorkThread extends Thread{
 		
 		private Socket sc;				//소켓 초기화
@@ -95,18 +93,18 @@ public class MultiServerTest {
 					sc =null;//퇴장했으니 소켓 초기화. 그래야 다음번에 연결 가능
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 			}
 		}
 		
 	}
-	
-	//메인문
-	public static void main(String[] args) {
-		
-		new MultiServerTest().serverStart();
 
+	/**
+	 * 어플리케이션이 구동되면 main문을 가장 먼저 찾아가게 되고 serverStart메소드을 실행한다. 
+	 */
+	public static void main(String[] args) {
+		new MultiServerTest().serverStart();
 	}
 
 }

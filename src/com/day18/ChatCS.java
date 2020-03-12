@@ -17,11 +17,9 @@ import java.net.MulticastSocket;
 //IP:32bit 주소체제
 //A,B,C class 
 //D class(224.0.0.0 ~ 239.255.255.255): IP 똑같이 세팅해도 충돌안남. 인터넷연결x이기 때문
-
 public class ChatCS extends Frame implements Runnable,ActionListener{
 
-	//같은 가상아이피와 호스트를 가진 사용자를 모아 다수채팅.
-	
+	private static final long serialVersionUID = 1L;
 	private MulticastSocket ms = null;
 	private InetAddress xGroup = null;
 	
@@ -32,17 +30,17 @@ public class ChatCS extends Frame implements Runnable,ActionListener{
 	private TextArea ta = new TextArea();
 	private TextField tf = new TextField();
 	
-	
-	
 	//DatagramSocket : UDP로 데이터그램 패킷을 전송하거나 수신
 	//DatagramPacket : UDP를 이용하여 전송될 수 있는 데이터
-	//MulticastSocket : 다수의 클라이언트에 데이터그램 전송
+	//MulticastSocket : 다수의 클라이언트에 데이터그램 전송	
+	//MulticastSocket : 서버에서 파일이나 데이터베이스에서 정보를 특정위치에 내려주면 클라이언트가 그 쪽으로 접속해서 받아감
 	
-	//MulticastSocket : 서버에서 파일이나 데이터베이스에서 정보를 특정위치에 내려주면 클라이언트가 그쪽으로 접속해서 받아감
-	
-	public ChatCS(){//기본생성자. 틀만듦
+	/**
+	 * 기본생성자를 통해 채팅할 때의 틀을 만든다.
+	 */
+	public ChatCS(){
 		
-		ta.setEditable(false);//수정안됨. 보기만 가능
+		ta.setEditable(false);//수정 불가능.읽기 가능
 		add(ta,BorderLayout.CENTER);
 		add(tf,BorderLayout.SOUTH);
 		tf.addActionListener(this);
@@ -60,6 +58,9 @@ public class ChatCS extends Frame implements Runnable,ActionListener{
 		tf.requestFocus();
 	}
 	
+	/**
+	 * 동일한 아이피와 포트번호로 접속한 사용자들을 모은다. 
+	 */
 	public void setup(){
 		
 		try {
@@ -73,10 +74,13 @@ public class ChatCS extends Frame implements Runnable,ActionListener{
 			th.start();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * 연결 종료 
+	 */
 	public void disConnection(){
 		
 		try {
@@ -84,22 +88,28 @@ public class ChatCS extends Frame implements Runnable,ActionListener{
 			ms.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 	}
 	
+	/**
+	 * 어플리케이션이 구동되면 main문을 가장 먼저 찾아가게 되고 챗팅 셋업을 시작한다. 
+	 */
 	public static void main(String[] args) {
 		new ChatCS().setup();
 	}
 
+	
+	/**
+	 * 메세지 전송한다.
+	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {//채팅전송
-		
+	public void actionPerformed(ActionEvent e) {
 		String str = tf.getText().trim();//읽어오면서 공백제거
 		
 		if(str.equals("")){
-			return;
+			return; //보낼 메세지가 없으면 중단한다.
 		}
 		
 		byte[] buffer = (userName+"]"+str).getBytes();//문자열이므로 배열 buffer에 넣기위해 형변환
@@ -116,11 +126,13 @@ public class ChatCS extends Frame implements Runnable,ActionListener{
 		}
 	}
 
+	/**
+	 * 메세지를 수신한다.
+	 */
 	@Override
-	public void run() {//채팅받음
-		
+	public void run() {
 		try {
-			//채팅이 언제끝날지 모르니까 데이터 전송 무한루프
+			//사용자의 요청이 있기전까지 채팅이 유지되므로 무한 루프. 
 			while(true){
 				byte[] buffer = new byte[512];
 				DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
@@ -131,7 +143,7 @@ public class ChatCS extends Frame implements Runnable,ActionListener{
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			disConnection();//에러 발생해서 연결 종료
+			disConnection();//수신 중 exception 발생해서 연결 종료
 		}
 	}
 

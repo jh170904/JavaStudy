@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀÎÅÍÆäÀÌ½º 
+public class ServerTest extends Frame implements ActionListener, Runnable{//´ÙÁßÀÎÅÍÆäÀÌ½º 
 	
 	private static final long serialVersionUID = 1L;
 	private TextArea ta = new TextArea();
@@ -27,9 +27,11 @@ public class ServerTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 	private Socket sc = null;
 	//Socket¿¡ ´ã°Ü¼­ Àü´ÞÇØ¾ß ÇÏ´Â Á¤º¸ : ¼­¹öip, ³»ip, data, port
 	//Port¹øÈ£ 0~65535. 0~2000Àº ´ëºÎºÐ OS¿¡¼­ »ç¿ë
-
 	//TCP-IP´Â »ó´ëÆíÀÇ IP¸¦ ¹Ýµå½Ã ¹Þ¾Æ¿À°Ô µÇ¾îÀÖÀ½
 	
+	/**
+	 * »ý¼ºÀÚ. ActionListener ¼³Á¤ 
+	 */
 	public ServerTest(){
 		
 		add(ta,BorderLayout.CENTER);
@@ -51,10 +53,16 @@ public class ServerTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 		setVisible(true);
 	}
 	
+	/**
+	 * ¾îÇÃ¸®ÄÉÀÌ¼ÇÀÌ ±¸µ¿µÇ¸é main¹®À» °¡Àå ¸ÕÀú Ã£¾Æ°¡°Ô µÇ°í serverStart¸Þ¼ÒµåÀ» ½ÇÇàÇÑ´Ù. 
+	 */
 	public static void main(String[] args) {
 		new ServerTest().serverStart();
 	}
 	
+	/**
+	 * ¼ÒÄÏ »ý¼º ¹× Å¬¶óÀÌ¾ðÆ®ÀÇ ¿äÃ»À» ±â´Ù¸°´Ù. ¼ÒÄÏÀÌ »ý¼ºµÇ¸é Thread¿¡ ÇÒ´çÇÑ´Ù.
+	 */
 	public void serverStart(){
 		
 		try {
@@ -68,13 +76,15 @@ public class ServerTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 			th.start();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Ã¤ÆÃÃ¢ µ¥ÀÌÅÍ¸¦ Àü¼ÛÇÑ´Ù.  
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		//Ã¤ÆÃÃ¢ µ¥ÀÌÅÍ¸¦ º¸³¾ ¶§ »ç¿ë
 		String str = tf.getText();
 		if(str.trim().equals("")){//°ø¹éÁ¦°Å ÈÄ ¹®ÀÚ¿­ °ªÀÌ nullÀÌ¸é º¸³»Áö¸¶¶ó
 			return;
@@ -85,7 +95,6 @@ public class ServerTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 		}
 		
 		try {
-			
 			OutputStream os = sc.getOutputStream();
 			PrintWriter pw = new PrintWriter(os,true);//¿©±â¼­ true´Â auto flush¿¡ ÇØ´ç. flush´Â enter¸¦ ¸¸³ª¾ß ÇÔ 
 			pw.println("[¼­¹ö]" + str);
@@ -100,16 +109,15 @@ public class ServerTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 		}
 	}
 	
+	/**
+	 * Ã¤ÆÃÃ¢ µ¥ÀÌÅÍ¸¦ ¼ö½ÅÇÑ´Ù.	
+	 */
 	@Override
 	public void run() {
-		
-		//½º·¹µå´Â Ã¤ÆÃÃ¢ µ¥ÀÌÅÍ¸¦ ¹ÞÀ» ¶§ »ç¿ë
-		
 		String str;
 		String ip;
 		
 		try {
-			
 			if(sc==null){//¼ÒÄÏÀÌ nullÀÌ¸é Å¬¶óÀÌ¾ðÆ®°¡ Á¢¼ÓÀ» ¾ÈÇÑ »óÅÂ
 				return;
 			}
@@ -131,7 +139,6 @@ public class ServerTest extends Frame implements ActionListener,Runnable{//´ÙÁßÀ
 			sc = null; 
 			ss = null;
 		}
-	
 	}
 
 }
